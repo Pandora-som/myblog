@@ -1,0 +1,15 @@
+{% extends 'templates_main/base.html' %}
+{% block title %}Главная страница{% endblock %}
+{%load static%}
+
+{% block body %}
+<h1>Статьиvvvv</h1>
+
+{% comment %} {% for state in about_state %} {% endcomment %}
+    
+        <h3>{{about_state.name_state}}</h3>
+        <p>{{about_state.date_state}}</p>
+        <p>{{about_state.state_text}}</p>
+{% comment %} {% endfor %} {% endcomment %}
+
+{% endblock %}

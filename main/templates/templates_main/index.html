@@ -1,0 +1,18 @@
+{% extends 'templates_main/base.html' %}
+{% block title %}Главная страница{% endblock %}
+{%load static%}
+
+
+{% block body %}
+<h1>Статьи</h1>
+
+{% for state in states %}
+    
+<a href="{% url 'main:states_detail' state.id %}">
+        <h3>{{state.name_state}}</h3>
+</a>
+        <p>{{state.date_state}}</p>
+    
+{% endfor %}
+
+{% endblock %}

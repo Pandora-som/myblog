@@ -1,0 +1,13 @@
+
+.header-line {
+    background-color: rgb(233, 148, 200);
+    height: 40px;
+    font-size: 22px;
+    /* margin: 0 auto; */
+}
+.a-link {
+    margin-left: 10px;
+    color: rgb(83, 76, 65);
+    font-size: 18px;
+    text-decoration: none;
+}
