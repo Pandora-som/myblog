@@ -3,7 +3,7 @@
 {%load static%}
 
 {% block body %}
-<h1>Статьиvvvv</h1>
+{% comment %} <h1>Статьиvvvv</h1> {% endcomment %}
 
 {% comment %} {% for state in about_state %} {% endcomment %}
     
@@ -11,5 +11,22 @@
         <p>{{about_state.date_state}}</p>
         <p>{{about_state.state_text}}</p>
 {% comment %} {% endfor %} {% endcomment %}
+<h2>Комментарии</h2>
+
+{% for comment in comments %}
+        <div>
+                {{comment.date_comment}} 
+                <p>{{comment.comment_text}}</p>
+        </div>   
+{% endfor %}
+<h4>Оставьте комментарий</h4>
+<form action="{% url 'main:comment_add' about_state.id %}" method="POST">
+        {% csrf_token %}
+        <div>
+             {% comment %} <label for="comment_text">Текст комментария</label> {% endcomment %}
+             <textarea name="comment_text" id="comment_text"></textarea>
+        </div>
+        <button>Добавить</button>
+</form>
 
 {% endblock %}
