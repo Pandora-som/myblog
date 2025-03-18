@@ -2,8 +2,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from datetime import datetime
+from django.core.paginator import Paginator
 
-from .models import User
+
 from .models import State
 from .models import Comment
 
@@ -11,7 +12,11 @@ from .models import Comment
 
 def index(request):
     prods = State.objects.all()
-    return render(request, "templates_main/index.html", {"states": prods})
+    paginator = Paginator(prods, 5)
+    page_number = request.GET.get('page')
+    prods_on_page = paginator.get_page(page_number)
+    return render(request, "templates_main/index.html", {"states": prods_on_page})
+
 
 def about_state(request, states_id):
     prods = get_object_or_404(State, pk=states_id)
@@ -26,3 +31,5 @@ def comment_add(request, states_id):
     )
     comment.save()
     return HttpResponseRedirect(reverse('main:states_detail', args=(states_id,)))
+
+ 

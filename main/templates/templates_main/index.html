@@ -11,8 +11,16 @@
 <a href="{% url 'main:states_detail' state.id %}">
         <h3>{{state.name_state}}</h3>
 </a>
-        <p>{{state.date_state}}</p>
-    
+        <p>{{state.date_state}}</p>  
 {% endfor %}
+
+<nav>
+        {% if states.has_previous %}
+        <a href="?page={{states.previous_page_number}}" class="strelki"> &laquo; Назад</a>
+        {% endif %}
+        {% if states.has_next %}
+        <a href="?page={{states.next_page_number}}" class="strelki">Вперёд &raquo;</a>
+        {% endif %}
+</nav>  
 
 {% endblock %}
